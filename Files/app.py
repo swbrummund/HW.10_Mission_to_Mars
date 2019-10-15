@@ -15,7 +15,6 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     scraped_data = mongo.db.scraped_data.find_one()
-    scraped_data['hemisphere_image_urls'] = []
     print(scraped_data)
     return render_template("index.html", scraped_data=scraped_data)
 
@@ -26,7 +25,7 @@ def scraper():
     mars_data = scrape_mars.scrape()
     scraped_data.update({}, mars_data, upsert=True)
     return redirect("/", code=302)
-
+ 
 
 if __name__ == "__main__":
     app.run(debug=True)

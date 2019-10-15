@@ -53,12 +53,11 @@
   <div class="container">
       <div class="row col-md-12"><h2>Mars Hemispheres</h2></div>
       <div class="row">
-          <img class="col-md-6" src= {{ scraped_data['hemisphere_image_urls'][0]['img_url'] }} alt="valles">
-          <img class="col-md-6" src= {{ scraped_data['hemisphere_image_urls'][1]['img_url'] }} alt="cerberus">
-      </div>
-      <div class="row">
-            <img class="col-md-6" src= {{ scraped_data['hemisphere_image_urls'][2]['img_url'] }} alt="schiaparelli">
-            <img class="col-md-6" src= {{ scraped_data['hemisphere_image_urls'][3]['img_url'] }} alt="syrtis">
+      {% for x in scraped_data[hemisphere_image_urls] %}
+
+          <img class="col-md-6" src= {{ x['img_url'] }} alt="valles">
+
+      {% endfor %}
       </div>
   </div>
 
